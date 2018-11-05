@@ -1,0 +1,70 @@
+<ntml ng-app="myApp" ng-controller="myController">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/angular-material.min.css">
+
+</head>
+<body>
+
+
+<script src="js/lib/angular.min.js"></script>
+<script src="js/lib/mqttws31-min.js"></script>
+
+<script src="js/lib/raphael-2.1.4.min.js"></script>
+<script src="js/lib/justgage.js"></script>
+
+<script src="js/lib/ui-bootstrap.min.js"></script>
+
+<script src="js/lib/angular-animate.min.js"></script>
+<script src="js/lib/angular-aria.min.js"></script>
+<script src="js/lib/angular-messages.min.js"></script>
+
+
+<script src="js/lib/angular-material.min.js"></script>
+
+
+<script src="js/app.js"></script>
+
+
+
+<div class="container" style="padding-top:15px">
+
+    <div class="row">
+
+	<div class="col-md-4">
+	    <div class="panel panel-primary">
+		<div id="gauge_temperature" style="width:280px; height:200px"></div>
+	    </div>
+	</div>
+
+	<div class="col-md-4">
+	    <div class="panel panel-default">
+		<div id="gauge_humidity" style="width:280px; height:200px"></div>
+	    </div>
+	</div>
+
+	<div class="col-md-4">
+	    <div class="panel panel-default">
+		<div class="panel-heading">
+		    <h3 class="panel-title">Light</h3>
+		</div>
+		<div class="panel-body">
+		    <md-switch ng-model="light" ng-click="switchLight()" aria-label="Light" layout-align="center"></md-switch>
+		</div>
+	    </div>
+	</div>
+
+    </div>
+
+</div>
+
+
+</body>
+</html>
+
+<!--Author: Stefan Braicu-->

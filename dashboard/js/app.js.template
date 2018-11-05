@@ -1,0 +1,70 @@
+var reconnectTimeout = 2000;
+var app = angular.module('myApp', ['ngMaterial']);
+app.controller("myController", function ($scope,$http) {
+
+var g_t = new JustGage({
+    id: "gauge_temperature",
+    value: 0,
+    min: 0,
+    max: 50,
+    title: "Temperature",
+    label: "\xB0C"
+  });
+
+var g_h = new JustGage({
+    id: "gauge_humidity",
+    value: 0,
+    min: 0,
+    max: 100,
+    title: "Humidity",
+    label: "%RH"
+  });
+
+//MQTT
+//### Snippet B1-1 here
+
+//### Snippet B1-2 here
+
+
+function onFailure() {
+  setTimeout(mqttConnect, reconnectTimeout);
+}
+
+
+// called when the client loses its connection
+function onConnectionLost(responseObject) {
+  if (responseObject.errorCode !== 0) {
+    console.log("onConnectionLost:"+responseObject.errorMessage);
+  }
+  setTimeout(mqttConnect, reconnectTimeout);
+  connect();
+}
+
+// called when a message arrives
+function onMessageArrived(message) {
+
+    if (message.destinationName == "cisco/t") {
+	g_t.refresh(message.payloadString);
+    } 
+    if (message.destinationName == "cisco/h") {
+	g_h.refresh(message.payloadString);
+    } 
+
+    if (message.destinationName == "cisco/light") {
+	if (message.payloadString == "on") {
+	    $scope.light = true;
+	} else {
+	    $scope.light = false;
+	} 
+	console.log(message.payloadString);
+    }
+
+  $scope.$apply();
+}
+
+//### Snippet B2 here
+
+//### Snippet B3 here
+
+
+});
