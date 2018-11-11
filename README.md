@@ -136,3 +136,15 @@ pip install paho-mqtt
 
 * go to `mqtt-raspberryPi-workshop/dasboard/`
 * open `index.html` in browser
+
+### Expected results
+
+if everything runs as expected you should see the following:
+
+#### RaspberryPi CLI
+
+![CLI](img/raspi-cli.gif)
+
+#### Browser
+
+![CLI](img/dasboard.gif)
