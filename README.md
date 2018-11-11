@@ -59,7 +59,7 @@ pip install paho-mqtt
 * edit line 24 in `app.js` and add the MQTT Broker address.
 
 ```javascript
-const mqtt_broker = "iot.eclipse.org";
+const mqtt_broker = "MQTT_BROKER_ADDRESS";
 ```
 
 ## connect Circuits

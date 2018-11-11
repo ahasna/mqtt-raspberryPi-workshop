@@ -12,9 +12,10 @@ import time
 import paho.mqtt.client as mqtt
 
 # VARS
-mqtt_broker = "iot.eclipse.org"
-mqtt_broker_port = "1883"
-led_pin = 13
+mqtt_broker = "MQTT_BROKER_ADDRESS"
+mqtt_broker_port = "MQTT_PORT"
+
+led_pin = 14
 sensor_pin = 4
 # initialize GPIO, First we stop the warnings which is a feature in this Python GPIO library.
 GPIO.setwarnings(False)

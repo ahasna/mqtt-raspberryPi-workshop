@@ -21,7 +21,7 @@ var g_h = new JustGage({
   });
 
 //MQTT
-const mqtt_broker = "iot.eclipse.org";
+const mqtt_broker = "MQTT_BROKER_ADDRESS";
 
 //### Snippet B1-1 here
 // Create a client instance
