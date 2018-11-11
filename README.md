@@ -26,15 +26,15 @@ In the same way, the python script on the RaspberryPi is sending Temperature/Hum
 
 ### On RaspberryPi
 
-* ssh into yor RaspberryPi either from CLI by using:
+* ssh into yor RaspberryPi either from CLI:
 
 ```bash
 ssh pi@<IP_ADDRESS>
 ```
 
-or using [PUTTY](https://www.putty.org/)
+* or using [PUTTY](https://www.putty.org/)
 
-* clone (or download) this repo to both your local machine by running the following command from your CLI
+* clone this repo to both your local machine by running the following command from your CLI (or just download if you don't have `git`)
 
 ```bash
 git clone https://github.com/ahasna/mqtt-raspberryPi-workshop.git
@@ -60,7 +60,7 @@ cd ~/mqtt-raspberryPi-workshop/htsensor
 sudo nano run.py
 ```
 
-edit lines 15 and 16 adding `mqtt_broker` and `mqtt_broker_port`
+* edit lines 15 and 16 adding `mqtt_broker` and `mqtt_broker_port`
 
 ```python
 # VARS
@@ -71,12 +71,15 @@ led_pin = 14
 sensor_pin = 4
 ```
 
-if necessary edit lines 18 and 19
+* if necessary edit lines 18 and 19
+
+* Save changes: `Ctrl + X` then `Y` then finally `Enter`
 
 ### On your Laptop
 
 * go to `mqtt-raspberryPi-workshop/dasboard/js`
-* edit line 24 in `app.js` and add the MQTT Broker address.
+
+* edit line 24 in `app.js` and add the MQTT Broker address
 
 ```javascript
 const mqtt_broker = "MQTT_BROKER_ADDRESS";
