@@ -21,8 +21,8 @@ var g_h = new JustGage({
   });
 
 //MQTT
-mqtt_broker = "Enter your MQTT Broker address as a string here";
-mqtt_broker_port = "Enter the port as a number here";
+const mqtt_broker = "iot.eclipse.org";
+
 //### Snippet B1-1 here
 // Create a client instance
 client = new Paho.MQTT.Client(mqtt_broker, Number(80), "/ws", "bb_" + parseInt(Math.random() * 100, 10));
