@@ -20,4 +20,19 @@ What really happens behind the scenes when we move the button on the dashboard, 
 In the same way, the python script on the RaspberryPi is sending Temperature/Humidity as MQTT messages and the dashboard s connected  to the same MQTT Broker and subscribed to the same topic, and after receiving the messages, a function is responsible about converting these messages to a user-friendly gauge.
 
 ## Setup
-Setup details are listed (here)[https://ahasna.github.io/mqtt-raspberryPi-workshop/setup.md]
+1. clone (or download) this repo to both your local machine by running the following command from your CLI
+
+```bash
+git clone https://github.com/ahasna/mqtt-raspberryPi-workshop.git
+```
+
+2. **on RaspberryPi** go to the repo you've just cloned
+
+```bash
+cd mqtt-raspberryPi-workshop
+```
+3. Run te following:
+```bash
+sudo apt-get update
+pip install paho-mqtt
+```
