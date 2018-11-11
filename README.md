@@ -89,13 +89,13 @@ const mqtt_broker = "MQTT_BROKER_ADDRESS";
 
 ### Temp./Humidity sensor (DHT11)
 
-follow the diagram below to connect the sensor to you RaspberryPi
+follow the diagram below to connect the sensor to your RaspberryPi
 
 ![DHT11](img/sensor-connect.png)
 
 ### LED
 
-follow the diagram below to connect the LED to you RaspberryPi
+follow the diagram below to connect the LED to your RaspberryPi
 
 ![LED](img/LED-raspi.png)
 
