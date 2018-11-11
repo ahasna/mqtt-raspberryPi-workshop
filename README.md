@@ -19,7 +19,5 @@ What really happens behind the scenes when we move the button on the dashboard, 
 
 In the same way, the python script on the RaspberryPi is sending Temperature/Humidity as MQTT messages and the dashboard s connected  to the same MQTT Broker and subscribed to the same topic, and after receiving the messages, a function is responsible about converting these messages to a user-friendly gauge.
 
-## How to run it?
-After installing all the python packages needed and connecting the relay and the sensor properly, you can start run.py, then you have to put the dashboard code on a webserver (you can install a local webserver on you machine), and by visiting the dashboard page you can control the light and read the Temperature/Humidity data.
-
-### Please make sure to refer to RaspberryPi GPIO layout, and sensor/rely data sheet (Google it!). Connections may differ due to different GPIO and sensor pins layouts.
+## Setup
+Setup details are listed (here)[https://ahasna.github.io/mqtt-raspberryPi-workshop/setup.md]
