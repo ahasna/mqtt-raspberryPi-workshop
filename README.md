@@ -53,6 +53,26 @@ sudo apt-get update
 pip install paho-mqtt
 ```
 
+* edit code:
+
+```bash
+cd ~/mqtt-raspberryPi-workshop/htsensor
+sudo nano run.py
+```
+
+edit lines 15 and 16 adding `mqtt_broker` and `mqtt_broker_port`
+
+```python
+# VARS
+mqtt_broker = "MQTT_BROKER_ADDRESS"
+mqtt_broker_port = "MQTT_PORT"
+# sensor/led
+led_pin = 14
+sensor_pin = 4
+```
+
+if necessary edit lines 18 and 19
+
 ### On your Laptop
 
 * go to `mqtt-raspberryPi-workshop/dasboard/js`
