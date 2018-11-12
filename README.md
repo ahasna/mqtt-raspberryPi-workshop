@@ -153,3 +153,7 @@ if everything runs as expected you should see the following:
 #### Browser
 
 ![CLI](img/dasboard.gif)
+
+## Feel like coding?
+
+if you what we have been doing so far is not challenging enough for you, try controlling the LED using the Temp./Humidity values and add an indication alert of that to the dashboard :sunglasses:
