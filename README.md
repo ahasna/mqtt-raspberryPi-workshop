@@ -22,6 +22,18 @@ What really happens behind the scenes when we move the button on the dashboard, 
 
 In the same way, the python script on the RaspberryPi is sending Temperature/Humidity as MQTT messages and the dashboard s connected  to the same MQTT Broker and subscribed to the same topic, and after receiving the messages, a function is responsible about converting these messages to a user-friendly gauge.
 
+## Further Reading and Resources
+
+**MQTT** [mqtt.org](http://mqtt.org/)
+
+**SSL for secure communication** [MQTT Code Library](https://www.eclipse.org/paho/)
+
+**Eclipse Mosquitto** [SSL](https://mosquitto.org/)
+
+**Eclipse Paho** [Paho library](https://iotbytes.wordpress.com/)
+
+**Cool IoT Blog** [IOT BYTES](https://iotbytes.wordpress.com/)
+
 ## Setup
 
 ### On RaspberryPi
