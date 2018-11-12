@@ -26,29 +26,38 @@ In the same way, the python script on the RaspberryPi is sending Temperature/Hum
 
 **MQTT** [mqtt.org](http://mqtt.org/)
 
-**SSL for secure communication** [MQTT Code Library](https://www.eclipse.org/paho/)
+**SSL for secure communication** [SSL](http://info.ssl.com/article.aspx?id=10241)
 
-**Eclipse Mosquitto** [SSL](https://mosquitto.org/)
+[**Eclipse Mosquitto**](https://mosquitto.org/)
 
-**Eclipse Paho** [Paho library](https://iotbytes.wordpress.com/)
+**Eclipse Paho** [Paho library](https://www.eclipse.org/paho/)
 
 **Cool IoT Blog** [IOT BYTES](https://iotbytes.wordpress.com/)
 
+**Python for Beginners** [Learn Python](https://www.learnpython.org/)
+
 ## Setup
+
+The setup has two parts:
+
+* **On the RaspberryPi**
+
+* **On your laptop**
 
 ### On RaspberryPi
 
-* ssh into yor RaspberryPi either from CLI:
+* ssh into yor RaspberryPi either from CLI (on MacOS and Linux):
 
 ```bash
 ssh pi@<IP_ADDRESS>
 ```
 
-* or using [PUTTY](https://www.putty.org/)
+* or using [PUTTY](https://www.putty.org/) on Windows
 
-* clone this repo to both your local machine by running the following command from your CLI (or just download if you don't have `git`)
+* clone this repo to your `RaspberryPi` by running the following command
 
 ```bash
+cd ~
 git clone https://github.com/ahasna/mqtt-raspberryPi-workshop.git
 ```
 
@@ -72,9 +81,11 @@ cd ~/mqtt-raspberryPi-workshop/htsensor
 sudo nano run.py
 ```
 
-* edit lines 15 and 22 adding `mqtt_broker`, `mqtt_broker_port`, `temp_topic`, `humidity_topic` and `light_topic`
+* edit lines 15 - 19 adding values to the following variables:
 
-**Note:** You'll have to change the topics to unique ones of your choice to avoid receiving messages from other publishers on thw same broker
+`mqtt_broker`, `mqtt_broker_port`, `temp_topic`, `humidity_topic` and `light_topic`
+
+**Note:** You'll have to change the topics to unique ones of your choice to avoid receiving messages from other publishers on the same broker
 
 ```python
 # VARS
@@ -88,15 +99,23 @@ led_pin = 14
 sensor_pin = 4
 ```
 
-* if necessary edit lines 21 and 22
+* if necessary edit lines 21 and 22 (in case you chose to use different GPIO Pins to connect the Sensor and LED)
 
 * Save changes: `Ctrl + X` then `Y` then finally `Enter`
 
 ### On your Laptop
 
-* go to `mqtt-raspberryPi-workshop/dasboard/js`
+* clone this repo to your `local machine (laptop)` by running the following command from your CLI
 
-* edit lines 24 - 27 in `app.js` and add the `MQTT_BROKER_ADDRESS` and make sure that the MQTT topics match those in `run.py`
+```bash
+git clone https://github.com/ahasna/mqtt-raspberryPi-workshop.git
+```
+
+* or just download from Github as a ZIP file if you don't have `git` installed. From [here](https://github.com/ahasna/mqtt-raspberryPi-workshop)
+
+* go to `mqtt-raspberryPi-workshop/dasboard/js` (the repo you've just downloaded or cloned)
+
+* edit lines 24 - 27 in `app.js` to add the `MQTT_BROKER_ADDRESS` and make sure that the MQTT topics match those in `run.py` (in RaspberryPi)
 
 ```javascript
 const mqtt_broker = "iot.eclipse.org";
@@ -166,6 +185,6 @@ if everything runs as expected you should see the following:
 
 ![CLI](img/dasboard.gif)
 
-## Feel like coding?
+## Is all of this too easy for you?
 
-if you what we have been doing so far is not challenging enough for you, try controlling the LED using the Temp./Humidity values and add an indication alert of that to the dashboard
+if what we have been doing so far is not challenging enough for you, try controlling the LED using the Temp./Humidity values and add an indication alert of that to the dashboard
