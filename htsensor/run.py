@@ -14,6 +14,9 @@ import paho.mqtt.client as mqtt
 # VARS
 mqtt_broker = "MQTT_BROKER_ADDRESS"
 mqtt_broker_port = "MQTT_PORT"
+temp_topic = "cisco/t"
+humidity_topic = "cisco/h"
+light_topic = "cisco/light"
 # sensor/led
 led_pin = 14
 sensor_pin = 4
@@ -45,7 +48,7 @@ def on_message(client, userdata, msg):
 # paho Python Client - documentation: http://www.eclipse.org/paho/clients/python/docs/
 client.on_message = on_message
 client.connect(mqtt_broker, mqtt_broker_port, 60)
-client.subscribe("cisco/light")
+client.subscribe(light_topic)
 client.loop_start()
 
 # Reading data from the sensor.
@@ -56,10 +59,10 @@ while True:
 	result = instance.read()
 	if result.is_valid():
 		if (result.temperature != temperature):
-			client.publish("cisco/t", result.temperature, qos=0, retain=True)
+			client.publish(temp_topic, result.temperature, qos=0, retain=True)
 			temperature = result.temperature
 		if (result.humidity != humidity):
-			client.publish("cisco/h", result.humidity, qos=0, retain=True)
+			client.publish(humidity_topic, result.humidity, qos=0, retain=True)
 			humidity = result.humidity
 		print("Temperature: {} C".format(result.temperature))
 		print("Humidity: {} %".format( result.humidity))

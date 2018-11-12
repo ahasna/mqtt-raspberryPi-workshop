@@ -22,6 +22,9 @@ var g_h = new JustGage({
 
 //MQTT
 const mqtt_broker = "MQTT_BROKER_ADDRESS";
+const temp_topic = "cisco/t" 
+const humidity_topic = "cisco/h"
+const light_topic = "cisco/light"
 
 //### Snippet B1-1 here
 // Create a client instance
@@ -38,9 +41,9 @@ client.connect({onSuccess:onConnect,onFailure:onFailure});}
 // called when the client connects
 function onConnect() {
   // Once a connection has been made, make a subscription and send a message.
-  client.subscribe("cisco/t");
-  client.subscribe("cisco/h");
-  client.subscribe("cisco/light");
+  client.subscribe(temp_topic);
+  client.subscribe(humidity_topic);
+  client.subscribe(light_topic);
 }
 
 
@@ -61,14 +64,14 @@ function onConnectionLost(responseObject) {
 // called when a message arrives
 function onMessageArrived(message) {
 
-    if (message.destinationName == "cisco/t") {
+    if (message.destinationName == temp_topic) {
 	g_t.refresh(message.payloadString);
     } 
-    if (message.destinationName == "cisco/h") {
+    if (message.destinationName == humidity_topic) {
 	g_h.refresh(message.payloadString);
     } 
 
-    if (message.destinationName == "cisco/light") {
+    if (message.destinationName == light_topic) {
 	if (message.payloadString == "on") {
 	    $scope.light = true;
 	} else {
@@ -82,9 +85,9 @@ function onMessageArrived(message) {
 
 //### Snippet B2 here
 function onMessageArrived(message) {
-    if (message.destinationName == "cisco/t") {      g_t.refresh(message.payloadString);    }
-    if (message.destinationName == "cisco/h") {     g_h.refresh(message.payloadString);   }
-    if (message.destinationName == "cisco/light") {
+    if (message.destinationName == temp_topic) {      g_t.refresh(message.payloadString);    }
+    if (message.destinationName == humidity_topic) {     g_h.refresh(message.payloadString);   }
+    if (message.destinationName == light_topic) {
         if (message.payloadString == "on") {             
 	    $scope.light = true;
         } else {

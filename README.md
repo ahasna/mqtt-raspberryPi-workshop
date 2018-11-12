@@ -60,18 +60,23 @@ cd ~/mqtt-raspberryPi-workshop/htsensor
 sudo nano run.py
 ```
 
-* edit lines 15 and 16 adding `mqtt_broker` and `mqtt_broker_port`
+* edit lines 15 and 22 adding `mqtt_broker`, `mqtt_broker_port`, `temp_topic`, `humidity_topic` and `light_topic`
+
+**Note:** You'll have to change the topics to unique ones of your choice to avoid receiving messages from other publishers on thw same broker
 
 ```python
 # VARS
 mqtt_broker = "MQTT_BROKER_ADDRESS"
 mqtt_broker_port = "MQTT_PORT"
+temp_topic = "some_topic/sub_topic"
+humidity_topic = "some_topic/another_sub_topic"  
+light_topic = "some_topic/also_another_sub_topic"
 # sensor/led
 led_pin = 14
 sensor_pin = 4
 ```
 
-* if necessary edit lines 18 and 19
+* if necessary edit lines 21 and 22
 
 * Save changes: `Ctrl + X` then `Y` then finally `Enter`
 
@@ -79,10 +84,13 @@ sensor_pin = 4
 
 * go to `mqtt-raspberryPi-workshop/dasboard/js`
 
-* edit line 24 in `app.js` and add the MQTT Broker address
+* edit lines 24 - 27 in `app.js` and add the `MQTT_BROKER_ADDRESS` and make sure that the MQTT topics match those in `run.py`
 
 ```javascript
 const mqtt_broker = "MQTT_BROKER_ADDRESS";
+const temp_topic = "some_topic/sub_topic"
+const humidity_topic = "some_topic/another_sub_topic"
+const light_topic = "some_topic/also_another_sub_topic"
 ```
 
 ## connect Circuits
