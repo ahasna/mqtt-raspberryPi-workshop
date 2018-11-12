@@ -156,4 +156,4 @@ if everything runs as expected you should see the following:
 
 ## Feel like coding?
 
-if you what we have been doing so far is not challenging enough for you, try controlling the LED using the Temp./Humidity values and add an indication alert of that to the dashboard :sunglasses:
+if you what we have been doing so far is not challenging enough for you, try controlling the LED using the Temp./Humidity values and add an indication alert of that to the dashboard
