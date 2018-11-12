@@ -78,11 +78,11 @@ sudo nano run.py
 
 ```python
 # VARS
-mqtt_broker = "MQTT_BROKER_ADDRESS"
-mqtt_broker_port = "MQTT_PORT"
-temp_topic = "some_topic/sub_topic"
-humidity_topic = "some_topic/another_sub_topic"  
-light_topic = "some_topic/also_another_sub_topic"
+mqtt_broker = "iot.eclipse.org"
+mqtt_broker_port = "1883"
+temp_topic = "some_topic/sub_topic" # example: asem/home/temp
+humidity_topic = "some_topic/another_sub_topic" # example: asem/home/humidity
+light_topic = "some_topic/also_another_sub_topic" # example: asem/home/light
 # sensor/led
 led_pin = 14
 sensor_pin = 4
@@ -99,10 +99,10 @@ sensor_pin = 4
 * edit lines 24 - 27 in `app.js` and add the `MQTT_BROKER_ADDRESS` and make sure that the MQTT topics match those in `run.py`
 
 ```javascript
-const mqtt_broker = "MQTT_BROKER_ADDRESS";
-const temp_topic = "some_topic/sub_topic"
-const humidity_topic = "some_topic/another_sub_topic"
-const light_topic = "some_topic/also_another_sub_topic"
+const mqtt_broker = "iot.eclipse.org";
+const temp_topic = "some_topic/sub_topic"; // example: asem/home/temp
+const humidity_topic = "some_topic/another_sub_topic"; // example: asem/home/humidity
+const light_topic = "some_topic/also_another_sub_topic"; // example: asem/home/light
 ```
 
 ## connect Circuits

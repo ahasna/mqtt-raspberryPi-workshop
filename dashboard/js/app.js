@@ -22,9 +22,9 @@ var g_h = new JustGage({
 
 //MQTT
 const mqtt_broker = "MQTT_BROKER_ADDRESS";
-const temp_topic = "cisco/t" 
-const humidity_topic = "cisco/h"
-const light_topic = "cisco/light"
+const temp_topic = "cisco/t"; 
+const humidity_topic = "cisco/h";
+const light_topic = "cisco/light";
 
 //### Snippet B1-1 here
 // Create a client instance
