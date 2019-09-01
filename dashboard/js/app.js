@@ -21,14 +21,14 @@ var g_h = new JustGage({
   });
 
 //MQTT
-const mqtt_broker = "MQTT_BROKER_ADDRESS";
-const temp_topic = "cisco/t"; 
-const humidity_topic = "cisco/h";
-const light_topic = "cisco/light";
+const mqtt_broker = "mqtt.eclipse.org";
+const temp_topic = "redi-cisco-2019/t"; 
+const humidity_topic = "redi-cisco-2019/h";
+const light_topic = "redi-cisco-2019/light";
 
 //### Snippet B1-1 here
 // Create a client instance
-client = new Paho.MQTT.Client(mqtt_broker, Number(80), "/ws", "bb_" + parseInt(Math.random() * 100, 10));
+client = new Paho.MQTT.Client(mqtt_broker, Number(80), "bb_" + parseInt(Math.random() * 100, 10));
 // set callback handlers
 client.onConnectionLost = onConnectionLost;
 client.onMessageArrived = onMessageArrived;
@@ -61,28 +61,6 @@ function onConnectionLost(responseObject) {
   connect();
 }
 
-// called when a message arrives
-function onMessageArrived(message) {
-
-    if (message.destinationName == temp_topic) {
-	g_t.refresh(message.payloadString);
-    } 
-    if (message.destinationName == humidity_topic) {
-	g_h.refresh(message.payloadString);
-    } 
-
-    if (message.destinationName == light_topic) {
-	if (message.payloadString == "on") {
-	    $scope.light = true;
-	} else {
-	    $scope.light = false;
-	} 
-	console.log(message.payloadString);
-    }
-
-  $scope.$apply();
-}
-
 //### Snippet B2 here
 function onMessageArrived(message) {
     if (message.destinationName == temp_topic) {      g_t.refresh(message.payloadString);    }
@@ -103,7 +81,7 @@ $scope.switchLight = function() {
 	} else {
 	    message = new Paho.MQTT.Message("off");
 	}
-        message.destinationName = "cisco/light";
+        message.destinationName = light_topic;
 
         client.send(message);
 };

@@ -113,7 +113,7 @@ git clone https://github.com/ahasna/mqtt-raspberryPi-workshop.git
 
 * or just download from Github as a ZIP file if you don't have `git` installed. From [here](https://github.com/ahasna/mqtt-raspberryPi-workshop)
 
-* go to `mqtt-raspberryPi-workshop/dasboard/js` (the repo you've just downloaded or cloned)
+* go to `mqtt-raspberryPi-workshop/dashboard/js` (the repo you've just downloaded or cloned)
 
 * edit lines 24 - 27 in `app.js` to add the `MQTT_BROKER_ADDRESS` and make sure that the MQTT topics match those in `run.py` (in RaspberryPi)
 
@@ -170,7 +170,7 @@ pip install paho-mqtt
 
 ### Dashboard
 
-* go to `mqtt-raspberryPi-workshop/dasboard/`
+* go to `mqtt-raspberryPi-workshop/dashboard/`
 * open `index.html` in browser
 
 ### Expected results
@@ -183,7 +183,7 @@ if everything runs as expected you should see the following:
 
 #### Browser
 
-![CLI](img/dasboard.gif)
+![CLI](img/dashboard.gif)
 
 ## Is all of this too easy for you?
 

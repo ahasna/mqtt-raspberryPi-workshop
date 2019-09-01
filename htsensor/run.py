@@ -12,11 +12,11 @@ import time
 import paho.mqtt.client as mqtt
 
 # VARS
-mqtt_broker = "MQTT_BROKER_ADDRESS"
-mqtt_broker_port = "MQTT_PORT"
-temp_topic = "cisco/t"
-humidity_topic = "cisco/h"
-light_topic = "cisco/light"
+mqtt_broker = "mqtt.eclipse.org"
+mqtt_broker_port = 1883
+temp_topic = "redi-cisco-2019/t"
+humidity_topic = "redi-cisco-2019/h"
+light_topic = "redi-cisco-2019/light"
 # sensor/led
 led_pin = 14
 sensor_pin = 4
@@ -37,11 +37,12 @@ client = mqtt.Client()
 
 
 def on_message(client, userdata, msg):
-    if (msg.payload == "on"):
+    utf_msg = msg.payload.decode("utf-8")
+    if (utf_msg == "on"):
         GPIO.output(led_pin, 1)
-    if (msg.payload == "off"):
+    if (utf_msg == "off"):
         GPIO.output(led_pin, 0)
-    print(msg.payload)
+    print("\t\t\t\t\t\tLight Switch: {}".format(utf_msg), end=' \r')
 
 
 # creating the MQTT client and establishing MQTT connection with the broker.
@@ -64,6 +65,6 @@ while True:
         if (result.humidity != humidity):
             client.publish(humidity_topic, result.humidity, qos=0, retain=True)
             humidity = result.humidity
-        print("Temperature: {} C".format(result.temperature))
-        print("Humidity: {} %".format(result.humidity))
-    time.sleep(1)
+        print("Temperature: {} C   \tHumidity: {} %".format(
+            result.temperature, result.humidity), end='\r')
+    time.sleep(0.5)
