@@ -24,7 +24,7 @@ sensor_pin = 4
 GPIO.setwarnings(False)
 # We also set the GPIO mode to BCM which is kind of standret RaspberryPi GPIO mapping scheme.
 GPIO.setmode(GPIO.BCM)
-# Funally we do a cleanup() this means that we set all GPIO pins to its default state.
+# Finally we do a cleanup() this means that we set all GPIO pins to its default state.
 GPIO.cleanup()
 
 # Setting GPIO pin no. 14 as an output.
@@ -56,14 +56,14 @@ instance = dht11.DHT11(pin=sensor_pin)
 temperature = 0
 humidity = 0
 while True:
-	result = instance.read()
-	if result.is_valid():
-		if (result.temperature != temperature):
-			client.publish(temp_topic, result.temperature, qos=0, retain=True)
-			temperature = result.temperature
-		if (result.humidity != humidity):
-			client.publish(humidity_topic, result.humidity, qos=0, retain=True)
-			humidity = result.humidity
-		print("Temperature: {} C".format(result.temperature))
-		print("Humidity: {} %".format( result.humidity))
-	time.sleep(1)
+    result = instance.read()
+    if result.is_valid():
+        if (result.temperature != temperature):
+            client.publish(temp_topic, result.temperature, qos=0, retain=True)
+            temperature = result.temperature
+        if (result.humidity != humidity):
+            client.publish(humidity_topic, result.humidity, qos=0, retain=True)
+            humidity = result.humidity
+        print("Temperature: {} C".format(result.temperature))
+        print("Humidity: {} %".format(result.humidity))
+    time.sleep(1)
