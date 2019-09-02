@@ -1,8 +1,5 @@
 import paho.mqtt.client as mqtt
-import socket
 import time
-
-hostname = socket.gethostname()
 
 # VARS
 mqtt_broker = "mqtt.eclipse.org"
