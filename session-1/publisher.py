@@ -11,10 +11,8 @@ topic = "redi-cisco-2019/t"
 
 
 def on_publish(client, userdata, mid):
-    print("Message successfully sent to broker at {}".format(
-        time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-    )
-    )
+    publish_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+    print("Message successfully sent to broker at {}".format(publish_time))
 
 
 client = mqtt.Client()

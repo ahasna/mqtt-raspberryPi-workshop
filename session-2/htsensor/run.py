@@ -60,10 +60,11 @@ while True:
     result = instance.read()
     if result.is_valid():
         if (result.temperature != temperature):
-            client.publish(temp_topic, result.temperature, qos=0, retain=True)
+            client.publish(temp_topic, result.temperature, qos=0, retain=False)
             temperature = result.temperature
         if (result.humidity != humidity):
-            client.publish(humidity_topic, result.humidity, qos=0, retain=True)
+            client.publish(humidity_topic, result.humidity,
+                           qos=0, retain=False)
             humidity = result.humidity
         print("Temperature: {} C   \tHumidity: {} %".format(
             result.temperature, result.humidity), end='\r')
