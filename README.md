@@ -8,6 +8,7 @@
     - [Termius](https://termius.com/) (cross-platform) <-- Recommended 😉
 2. Text Editor:
     - [Visual Studio Code](https://code.visualstudio.com/) <-- It's open-source, ok? 😒
+3. [SFTP Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=liximomo.sftp)
 
 ## What is our workshop about
 
@@ -49,48 +50,48 @@ In the same way, the python script on the RaspberryPi is sending Temperature/Hum
 
 The setup has two parts:
 
-* **On the RaspberryPi**
+- **On the RaspberryPi**
 
-* **On your laptop**
+- **On your laptop**
 
 ### On RaspberryPi
 
-* ssh into yor RaspberryPi either from CLI (on MacOS and Linux):
+- ssh into yor RaspberryPi either from CLI (on MacOS and Linux):
 
 ```bash
 ssh pi@<IP_ADDRESS>
 ```
 
-* or using [PUTTY](https://www.putty.org/) on Windows
+- or using [PUTTY](https://www.putty.org/) on Windows
 
-* clone this repo to your `RaspberryPi` by running the following command
+- clone this repo to your `RaspberryPi` by running the following command
 
 ```bash
 cd ~
 git clone https://github.com/ahasna/mqtt-raspberryPi-workshop.git
 ```
 
-* go to the repo you've just cloned
+- go to the repo you've just cloned
 
 ```bash
 cd ~/mqtt-raspberryPi-workshop
 ```
 
-* Run the following:
+- Run the following:
 
 ```bash
 sudo apt-get update
 pip install paho-mqtt
 ```
 
-* edit code:
+- edit code:
 
 ```bash
 cd ~/mqtt-raspberryPi-workshop/htsensor
 sudo nano run.py
 ```
 
-* edit lines 15 - 19 adding values to the following variables:
+- edit `run.py` adding values to the following variables:
 
 `mqtt_broker`, `mqtt_broker_port`, `temp_topic`, `humidity_topic` and `light_topic`
 
@@ -98,7 +99,7 @@ sudo nano run.py
 
 ```python
 # VARS
-mqtt_broker = "iot.eclipse.org"
+mqtt_broker = "mqtt.eclipse.org"
 mqtt_broker_port = "1883"
 temp_topic = "some_topic/sub_topic" # example: asem/home/temp
 humidity_topic = "some_topic/another_sub_topic" # example: asem/home/humidity
@@ -108,23 +109,21 @@ led_pin = 14
 sensor_pin = 4
 ```
 
-* if necessary edit lines 21 and 22 (in case you chose to use different GPIO Pins to connect the Sensor and LED)
-
-* Save changes: `Ctrl + X` then `Y` then finally `Enter`
+- Save changes: `Ctrl + X` then `Y` then finally `Enter`
 
 ### On your Laptop
 
-* clone this repo to your `local machine (laptop)` by running the following command from your CLI
+- clone this repo to your `local machine (laptop)` by running the following command from your CLI
 
 ```bash
 git clone https://github.com/ahasna/mqtt-raspberryPi-workshop.git
 ```
 
-* or just download from Github as a ZIP file if you don't have `git` installed. From [here](https://github.com/ahasna/mqtt-raspberryPi-workshop)
+- or just download from Github as a ZIP file if you don't have `git` installed. From [here](https://github.com/ahasna/mqtt-raspberryPi-workshop)
 
-* go to `mqtt-raspberryPi-workshop/dashboard/js` (the repo you've just downloaded or cloned)
+- go to `mqtt-raspberryPi-workshop/dashboard/js` (the repo you've just downloaded or cloned)
 
-* edit lines 24 - 27 in `app.js` to add the `MQTT_BROKER_ADDRESS` and make sure that the MQTT topics match those in `run.py` (in RaspberryPi)
+- edit `app.js` to add the `MQTT_BROKER_ADDRESS` and make sure that the MQTT topics match those in `run.py` (in RaspberryPi)
 
 ```javascript
 const mqtt_broker = "iot.eclipse.org";
@@ -155,7 +154,7 @@ for more details see the GPIO layout for RaspberryPi3 below
 
 ### RaspberryPi
 
-* ssh into yor RaspberryPi either from CLI by using:
+- ssh into yor RaspberryPi either from CLI by using:
 
 ```bash
 ssh pi@<IP_ADDRESS>
@@ -163,14 +162,14 @@ ssh pi@<IP_ADDRESS>
 
 or using [PUTTY](https://www.putty.org/)
 
-* go to the repo you've cloned
+- go to the repo you've cloned
 
 ```bash
 cd ~/mqtt-raspberryPi-workshop/htsensor
 python run.py
 ```
 
-* Run the following:
+- Run the following:
 
 ```bash
 sudo apt-get update
@@ -179,8 +178,8 @@ pip install paho-mqtt
 
 ### Dashboard
 
-* go to `mqtt-raspberryPi-workshop/dashboard/`
-* open `index.html` in browser
+- go to `mqtt-raspberryPi-workshop/dashboard/`
+- open `index.html` in browser
 
 ### Expected results
 
