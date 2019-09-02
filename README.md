@@ -1,5 +1,14 @@
 # MQTT and RaspberryPi
 
+## Prerequisites
+
+1. SSH Client:
+    - [SSH from CLI](https://www.ssh.com/ssh/command/) (Linux and MacOS)
+    - [Putty](https://www.putty.org/) (Windows)
+    - [Termius](https://termius.com/) (cross-platform) <-- Recommended 😉
+2. Text Editor:
+    - [Visual Studio Code](https://code.visualstudio.com/) <-- It's open-source, ok? 😒
+
 ## What is our workshop about
 
 This workshop is about applying MQTT protocol to turn ON/OFF a light, and to get Temperature and Humidity data and view it on an online dashboard
