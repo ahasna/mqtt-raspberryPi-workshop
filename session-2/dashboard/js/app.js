@@ -85,5 +85,7 @@ $scope.switchLight = function() {
 
         client.send(message);
 };
-
+document.getElementById("lightTopic").innerHTML = light_topic;
+document.getElementById("tempTopic").innerHTML = temp_topic;
+document.getElementById("humidityTopic").innerHTML = humidity_topic;
 });
