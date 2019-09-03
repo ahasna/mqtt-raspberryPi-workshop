@@ -42,7 +42,8 @@ def on_message(client, userdata, msg):
         GPIO.output(led_pin, 1)
     if (utf_msg == "off"):
         GPIO.output(led_pin, 0)
-    print("\t\t\t\t\t\tLight Switch: {}".format(utf_msg), end=' \r')
+    print("Light Switch: {} / from topic: {} at {}".format(utf_msg, light_topic,
+                                                           time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())), end=' \r\n')
 
 
 # creating the MQTT client and establishing MQTT connection with the broker.
@@ -66,6 +67,6 @@ while True:
             client.publish(humidity_topic, result.humidity,
                            qos=0, retain=False)
             humidity = result.humidity
-        print("Temperature: {} C   \tHumidity: {} %".format(
-            result.temperature, result.humidity), end='\r')
+        print("Temperature: {} C / from topic: {} \nHumidity: {} % / from topic: {}\nat {}".format(
+            result.temperature, result.humidity, temp_topic, humidity_topic, time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())), end='\r\n')
     time.sleep(0.5)
