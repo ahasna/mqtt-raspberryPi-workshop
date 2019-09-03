@@ -9,7 +9,7 @@ topic = "redi-cisco-2019/t"
 
 def on_message(client, userdata, msg):
     utf_msg = msg.payload.decode("utf-8")
-    print("Message received: ({}) at {} from topic: {}".format(
+    print("Message received: {}\nat: {}\nFrom Topic: {}\n".format(
         utf_msg, time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()), topic))
 
 
