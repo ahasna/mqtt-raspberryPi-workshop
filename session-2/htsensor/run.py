@@ -57,6 +57,8 @@ client.loop_start()
 instance = dht11.DHT11(pin=sensor_pin)
 temperature = 0
 humidity = 0
+client.publish(humidity_topic, 0, qos=0, retain=True)
+client.publish(temp_topic, 0, qos=0, retain=True)
 while True:
     result = instance.read()
     if result.is_valid():
