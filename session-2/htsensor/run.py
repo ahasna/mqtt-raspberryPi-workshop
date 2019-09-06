@@ -36,14 +36,37 @@ client = mqtt.Client()
 # deifining on_message function that controls the GPIO pin to turn ON/OFF the light and prints received messages.
 
 
+def color_it(text, color):
+    red = "\033[1;31;40m"
+    green = "\033[1;32;40m"
+    yellow = "\033[1;33;40m"
+    cyan = "\033[1;36;40m"
+    purple = "\033[1;35;40m"
+    normal = "\033[0;37;40m"
+
+    if color == "red":
+        return "{}{}{}".format(red, text, normal)
+    elif color == "green":
+        return "{}{}{}".format(green, text, normal)
+    elif color == "yellow":
+        return "{}{}{}".format(yellow, text, normal)
+    elif color == "cyan":
+        return "{}{}{}".format(cyan, text, normal)
+    elif color == "purple":
+        return "{}{}{}".format(purple, text, normal)
+    else:
+        return text
+
+
 def on_message(client, userdata, msg):
+    tabs = "\t" * 4
     utf_msg = msg.payload.decode("utf-8")
     if (utf_msg == "on"):
         GPIO.output(led_pin, 1)
     if (utf_msg == "off"):
         GPIO.output(led_pin, 0)
-    print("Light Switch: {} / from topic: {} at {}".format(utf_msg, light_topic,
-                                                           time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())), end=' \r\n')
+    print("{} Light Switch: {}".format(
+        tabs, color_it(utf_msg, "purple")), end='  \r')
 
 
 # creating the MQTT client and establishing MQTT connection with the broker.
@@ -55,20 +78,33 @@ client.loop_start()
 
 # Reading data from the sensor.
 instance = dht11.DHT11(pin=sensor_pin)
-temperature = 0
-humidity = 0
-client.publish(humidity_topic, 0, qos=0, retain=True)
-client.publish(temp_topic, 0, qos=0, retain=True)
+client.publish(humidity_topic, 0, qos=0, retain=False)
+client.publish(temp_topic, 0, qos=0, retain=False)
+# info
+print()
+print("Connected to MQTT Broker: {}  on Port: {}".format(
+    color_it(mqtt_broker, "yellow"), color_it(mqtt_broker_port, "green")))
+print()
+print("Light Topic: ", color_it(light_topic, "cyan"))
+print("Temp. Topic: ", color_it(temp_topic, "cyan"))
+print("Humidity Topic: ", color_it(humidity_topic, "cyan"))
+print()
+
 while True:
     result = instance.read()
     if result.is_valid():
-        if (result.temperature != temperature):
+        if (result.temperature):
             client.publish(temp_topic, result.temperature, qos=0, retain=False)
             temperature = result.temperature
-        if (result.humidity != humidity):
+        if (result.humidity):
             client.publish(humidity_topic, result.humidity,
                            qos=0, retain=False)
             humidity = result.humidity
-        print("Temperature: {} C sent to topic: {} \nHumidity: {} % sent to topic: {}\nat {}\n".format(
-            result.temperature, temp_topic, result.humidity, humidity_topic, time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())), end='\r\n')
+
+        # colored CLI output
+        info = "Temperature: {} Humidity: {}".format(color_it(str(
+            result.temperature) + " C", "red"), color_it(str(result.humidity) + " %", "red"))
+
+        print(info, end='\r')
+
     time.sleep(1)
