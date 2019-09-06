@@ -59,13 +59,13 @@ def color_it(text, color):
 
 
 def on_message(client, userdata, msg):
-    tabs = "\t" * 4
+    tabs = "\t" * 5
     utf_msg = msg.payload.decode("utf-8")
     if (utf_msg == "on"):
         GPIO.output(led_pin, 1)
     if (utf_msg == "off"):
         GPIO.output(led_pin, 0)
-    print("{} Light Switch: {}".format(
+    print("{}Light Switch: {}".format(
         tabs, color_it(utf_msg, "purple")), end='  \r')
 
 
@@ -102,7 +102,7 @@ while True:
                    qos=0, retain=False)
 
     # colored CLI output
-    info = "Temperature: {} Humidity: {}".format(color_it(str(
+    info = "Temperature: {}  Humidity: {}".format(color_it(str(
         temperature) + " C", "red"), color_it(str(humidity) + " %", "red"))
 
     print(info, end='\r')
