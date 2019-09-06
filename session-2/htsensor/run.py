@@ -67,6 +67,6 @@ while True:
             client.publish(humidity_topic, result.humidity,
                            qos=0, retain=False)
             humidity = result.humidity
-        print("Temperature: {} C / from topic: {} \nHumidity: {} % / from topic: {}\nat {}".format(
-            result.temperature, result.humidity, temp_topic, humidity_topic, time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())), end='\r\n')
+        print("Temperature: {} C sent to topic: {} \nHumidity: {} % sent to topic: {}\nat {}\n".format(
+            result.temperature, temp_topic, result.humidity, humidity_topic, time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())), end='\r\n')
     time.sleep(0.5)
