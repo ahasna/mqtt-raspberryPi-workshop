@@ -157,7 +157,7 @@ or using [PUTTY](https://www.putty.org/)
 - go to the repo you've cloned
 
 ```bash
-cd ~/mqtt-raspberryPi-workshop/htsensor
+cd ~/mqtt-raspberryPi-workshop/code/htsensor
 python3 run.py
 ```
 
