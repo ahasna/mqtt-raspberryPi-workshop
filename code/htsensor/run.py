@@ -12,7 +12,7 @@ import time
 import paho.mqtt.client as mqtt
 
 # VARS
-mqtt_broker = "mqtt.eclipse.org"
+mqtt_broker = "broker.mqttdashboard.com"
 mqtt_broker_port = 1883
 temp_topic = "redi-cisco-2019/t"
 humidity_topic = "redi-cisco-2019/h"
@@ -94,7 +94,8 @@ while True:
     result = instance.read()
     if result.is_valid():
         if (result.temperature):
-            client.publish(temp_topic, result.temperature, qos=0, retain=False)
+            client.publish(temp_topic, result.temperature,
+                           qos=0, retain=False)
             temperature = result.temperature
         if (result.humidity):
             client.publish(humidity_topic, result.humidity,

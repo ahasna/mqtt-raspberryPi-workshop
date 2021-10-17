@@ -21,14 +21,18 @@ var g_h = new JustGage({
   });
 
 //MQTT
-const mqtt_broker = "mqtt.eclipse.org";
-const temp_topic = "redi-cisco-2019/t"; 
+const mqtt_broker = "broker.mqttdashboard.com";
+const temp_topic = "redi-cisco-2019/t";
 const humidity_topic = "redi-cisco-2019/h";
 const light_topic = "redi-cisco-2019/light";
 
 //### Snippet B1-1 here
 // Create a client instance
-client = new Paho.MQTT.Client(mqtt_broker, Number(80), "bb_" + parseInt(Math.random() * 100, 10));
+client = new Paho.MQTT.Client(
+  mqtt_broker,
+  Number(8000),
+  "bb_" + parseInt(Math.random() * 100, 10)
+);
 // set callback handlers
 client.onConnectionLost = onConnectionLost;
 client.onMessageArrived = onMessageArrived;
