@@ -35,6 +35,8 @@ GPIO.output(led_pin, 0)
 client = mqtt.Client()
 # deifining on_message function that controls the GPIO pin to turn ON/OFF the light and prints received messages.
 
+client.publish(light_topic, 'off', qos=0, retain=False)
+
 
 def color_it(text, color):
     red = "\033[1;31;40m"
