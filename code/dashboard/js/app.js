@@ -21,9 +21,9 @@ app.controller("myController", function ($scope, $http) {
 
   //MQTT
   const mqtt_broker = "broker.mqttdashboard.com";
-  const temp_topic = "redi-cisco-2019/t";
-  const humidity_topic = "redi-cisco-2019/h";
-  const light_topic = "redi-cisco-2019/light";
+  const temp_topic = "redi-iot-2021/t";
+  const humidity_topic = "redi-iot-2021/h";
+  const light_topic = "redi-iot-2021/light";
 
   //### Snippet B1-1 here
   // Create a client instance
